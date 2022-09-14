@@ -21,6 +21,14 @@ export class ProductDetailComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router) { }
 
+    delete() {
+      this.productService.deleteProduct(this.product.id).subscribe(
+        {
+          next: res => console.log('ok!')
+        }
+      );
+    }
+
   newFavourite(product: Product) {
     this.favouriteService.addToFavourites(product);
     this.router.navigateByUrl('/products');
